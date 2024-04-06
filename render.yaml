@@ -1,0 +1,26 @@
+version: "3.7"
+ 
+services:
+    - type: web
+        plan: free
+        runtime: docker
+        name: changedetection.io
+        repo: ghcr.io/dgtlmoon/changedetection.io
+        envVars:
+            - key: WEBDRIVER_URL
+            value: http://browser-chrome:4444/wd/hub
+
+    - type: web
+        plan: free
+        runtime: docker
+        name: browser-chrome
+          repo: selenium/standalone-chrome-debug:3.141.59
+          envVars:
+            - key: VNC_NO_PASSWORD
+              value: 1
+            - key: SCREEN_WIDTH
+              value: 1920
+            - key: SCREEN_HEIGHT
+              value: 1080
+            - key: SCREEN_DEPTH
+              value: 24
